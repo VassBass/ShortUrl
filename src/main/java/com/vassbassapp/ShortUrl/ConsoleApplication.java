@@ -1,0 +1,58 @@
+package com.vassbassapp.ShortUrl;
+
+import model.UrlKeeper;
+import service.UrlConverter;
+import service.UrlService;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class ConsoleApplication {
+
+    private final UrlService service;
+
+    public ConsoleApplication(UrlService service){
+        this.service = service;
+    }
+
+    public void start(){
+        printMainMessage();
+
+        Scanner consoleIn = new Scanner(System.in);
+        while (true){
+            String request = consoleIn.next();
+            if (request.equalsIgnoreCase("close") || request.equals("quit") || request.equalsIgnoreCase("quit")){
+                consoleIn.close();
+                System.exit(0);
+            }else if (request.equalsIgnoreCase("help")) {
+                printHelpMessage();
+            }else if (request.equalsIgnoreCase("all")){
+                List<UrlKeeper> list = service.getAllUrl();
+                for (UrlKeeper keeper : list){
+                    System.out.println("-");
+                    System.out.println("longUrl: " + keeper.getLongUrl());
+                    System.out.println("shortUrl: http://localhost:8080/" + keeper.getShortUrl());
+                }
+            }else {
+                if (UrlConverter.isUrl(request)) {
+                    UrlKeeper urlKeeper = service.addUrl(request, 6);
+                    System.out.println("Ваша короткая ссылка:");
+                    System.out.println("http://localhost:8080/" + urlKeeper.getShortUrl());
+                }else {
+                    System.out.println("Ваш ввод не является URL-адресом");
+                }
+                printMainMessage();
+            }
+        }
+    }
+
+    private static void printHelpMessage(){
+        System.out.println("Что б посмотреть все сохраненные ссылки введите \"all\"");
+        System.out.println("Что б закончить работу приложения введите \"close\", \"quit\" или \"exit\"");
+    }
+
+    private static void printMainMessage(){
+        System.out.println("Что б узнать все команды введите \"help\"");
+        System.out.println("Что б преобразовать длинную ссылку в короткую введите её в консоль");
+    }
+}
