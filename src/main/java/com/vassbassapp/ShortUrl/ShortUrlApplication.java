@@ -32,8 +32,15 @@ public class ShortUrlApplication {
 			if (request.equalsIgnoreCase("close") || request.equals("quit") || request.equalsIgnoreCase("quit")){
 				consoleIn.close();
 				System.exit(0);
-			}else if (request.equalsIgnoreCase("help")){
-				printMainMessage();
+			}else if (request.equalsIgnoreCase("help")) {
+				printHelpMessage();
+			}else if (request.equalsIgnoreCase("all")){
+				List<UrlKeeper>list = service.getAllUrl();
+				for (UrlKeeper keeper : list){
+					System.out.println("-");
+					System.out.println("longUrl: " + keeper.getLongUrl());
+					System.out.println("shortUrl: http://localhost:8080/" + keeper.getShortUrl());
+				}
 			}else {
 				if (UrlConverter.isUrl(request)) {
 					UrlKeeper urlKeeper = service.addUrl(request, 6);
@@ -47,8 +54,13 @@ public class ShortUrlApplication {
 		}
 	}
 
-	private static void printMainMessage(){
+	private static void printHelpMessage(){
+		System.out.println("Что б посмотреть все сохраненные ссылки введите \"all\"");
 		System.out.println("Что б закончить работу приложения введите \"close\", \"quit\" или \"exit\"");
+	}
+
+	private static void printMainMessage(){
+		System.out.println("Что б узнать все команды введите \"help\"");
 		System.out.println("Что б преобразовать длинную ссылку в короткую введите её в консоль");
 	}
 
