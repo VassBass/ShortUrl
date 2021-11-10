@@ -19,14 +19,4 @@ public class UrlKeeper {
     public @NotNull String getShortUrl(){
         return this.shortUrl;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || this.getClass() != obj.getClass()){
-            return false;
-        }else {
-            UrlKeeper o = (UrlKeeper) obj;
-            return this.shortUrl.equals(o.getShortUrl());
-        }
-    }
 }

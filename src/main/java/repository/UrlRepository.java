@@ -19,8 +19,10 @@ public class UrlRepository {
         while (true){
             boolean exist = false;
             UrlKeeper urlKeeper = new UrlKeeper(longUrl, lengthOfShortUrl);
-            for (UrlKeeper keeper : this.urlList){
-                if (urlKeeper.equals(keeper)){
+            for (UrlKeeper keeper : this.urlList) {
+                if (keeper.getLongUrl().equals(longUrl) && keeper.getShortUrl().length() == lengthOfShortUrl) {
+                    return keeper;
+                }else if (keeper.getShortUrl().equals(urlKeeper.getShortUrl()) && !keeper.getLongUrl().equals(urlKeeper.getLongUrl())){
                     exist = true;
                     break;
                 }
@@ -30,6 +32,7 @@ public class UrlRepository {
                 return urlKeeper;
             }
         }
+
     }
 
     public List<UrlKeeper> getAllUrl(){
