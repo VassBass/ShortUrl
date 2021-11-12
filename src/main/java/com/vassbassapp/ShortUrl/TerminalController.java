@@ -1,8 +1,7 @@
-package rest;
+package com.vassbassapp.ShortUrl;
 
-import com.vassbassapp.ShortUrl.ShortUrlApplication;
-import model.UrlKeeper;
-import service.UrlConverter;
+import com.vassbassapp.ShortUrl.model.UrlKeeper;
+import com.vassbassapp.ShortUrl.service.UrlConverter;
 
 import java.util.List;
 import java.util.Scanner;

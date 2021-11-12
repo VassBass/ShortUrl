@@ -1,8 +1,8 @@
-package service;
+package com.vassbassapp.ShortUrl.service;
 
-import model.UrlKeeper;
+import com.vassbassapp.ShortUrl.model.UrlKeeper;
 import org.springframework.stereotype.Service;
-import repository.UrlRepository;
+import com.vassbassapp.ShortUrl.repository.UrlRepository;
 
 import java.util.List;
 

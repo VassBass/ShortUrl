@@ -4,9 +4,12 @@
         <title>Short URL</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
-    <body>
-        <h1>Получить короткую ссылку</h1>
-        <p th:text="'Короткая ссылка: http://localhost:8080/' + ${keeper.shortUrl}" />
-        <a href="/">Назад</a>
+    <body style="background-color:#000000">
+        <h1 style="display:flex; justify-content:center; color:#FFFFFF; margin-top:100px"
+        >Короткая ссылка:</h1>
+        <p style="display:flex; justify-content:center; color:#FFFFFF"
+           th:text="'Короткая ссылка: http://localhost:8080/' + ${keeper.shortUrl}" />
+        <a style="display:flex; justify-content:center; color:#FFFFFF"
+           href="/">Назад</a>
     </body>
 </html>

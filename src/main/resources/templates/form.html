@@ -4,12 +4,23 @@
         <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
         <title>Short URL</title>
     </head>
-    <body>
-        <h1>Получить короткую ссылку</h1>
-        <form action="#" th:action="@{/}" th:object="${keeper}" method="post">
-            <p>Полная ссылка: <input type="text" th:field="*{longUrl}"/></p>
-            <p><input type="submit" value="Создать" /> <input type="reset" value="Очистить поле ввода" /></p>
+    <body style="background-color:#000000">
+        <h1 style="display:flex; justify-content:center; margin-top:100px; color:#FFFFFF"
+        >Получить короткую ссылку</h1>
+        <form style="display:flex; justify-content:center;"
+              action="#" th:action="@{/}" th:object="${keeper}" method="post">
+            <p style="color:#FFFFFF">Полная ссылка:
+                <input style="border-radius:10px; height:20px; width:500px; margin-bottom:10px"
+                       type="text" th:field="*{longUrl}"/>
+            </p>
+            <p>
+                <input style="margin-left:5px; background-color:#FFFFFF; border-radius:10px;height:24px; width:100px"
+                       type="submit" value="Создать" />
+                <input style="background-color:#FFFFFF; border-radius:10px; height:24px; width:100px"
+                       type="reset" value="Очистить" />
+            </p>
         </form>
-        <a href="/all">Посмотреть все сохраненные ссылки</a>
+        <a style="display:flex; justify-content:center; color:#FFFFFF"
+           href="/all">Посмотреть все сохраненные ссылки</a>
     </body>
 </html>

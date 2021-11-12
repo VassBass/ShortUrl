@@ -1,6 +1,6 @@
-package model;
+package com.vassbassapp.ShortUrl.model;
 
-import service.UrlConverter;
+import com.vassbassapp.ShortUrl.service.UrlConverter;
 
 public class UrlKeeper {
     private String longUrl, shortUrl;

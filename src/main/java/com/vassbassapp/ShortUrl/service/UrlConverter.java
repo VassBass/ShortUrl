@@ -1,4 +1,4 @@
-package service;
+package com.vassbassapp.ShortUrl.service;
 
 import org.apache.commons.text.RandomStringGenerator;
 

@@ -1,6 +1,6 @@
-package repository;
+package com.vassbassapp.ShortUrl.repository;
 
-import model.UrlKeeper;
+import com.vassbassapp.ShortUrl.model.UrlKeeper;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
