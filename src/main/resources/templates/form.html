@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+        <title>Short URL</title>
+    </head>
+    <body>
+        <h1>Получить короткую ссылку</h1>
+        <form action="#" th:action="@{/}" th:object="${keeper}" method="post">
+            <p>Полная ссылка: <input type="text" th:field="*{longUrl}"/></p>
+            <p><input type="submit" value="Создать" /> <input type="reset" value="Очистить поле ввода" /></p>
+        </form>
+    </body>
+</html>

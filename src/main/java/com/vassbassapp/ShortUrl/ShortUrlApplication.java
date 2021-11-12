@@ -7,6 +7,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import repository.UrlRepository;
 import service.UrlService;
@@ -14,8 +16,9 @@ import service.UrlService;
 import java.util.List;
 
 @SpringBootApplication
-@RestController
-@RequestMapping
+//@RestController
+//@RequestMapping
+@Controller
 public class ShortUrlApplication {
 
 	private static final UrlService service = new UrlService(new UrlRepository());
@@ -26,18 +29,26 @@ public class ShortUrlApplication {
 		new ConsoleApplication(service).start();
 	}
 
-	@GetMapping(path = "/")
-	public String emptyRequest(){
-		return "Что б просмотреть все сохраненные ссылки введите в адресную строку http://localhost:8080/all";
+	@GetMapping("/")
+	public String mainForm(Model model){
+		model.addAttribute("keeper", new UrlKeeper());
+		return "form";
+	}
+
+	@PostMapping("/")
+	public String shortSubmit(@ModelAttribute UrlKeeper fromModel, Model model){
+		UrlKeeper keeper = service.addUrl(fromModel.getLongUrl(), 6);
+		model.addAttribute("keeper", keeper);
+		return "result";
 	}
 
 	@GetMapping(path = "/{shortUrl}")
-	public ResponseEntity redirect(@PathVariable("shortUrl") String shortUrl) {
+	public ResponseEntity<String> redirect(@PathVariable("shortUrl") String shortUrl) {
 		String longUrl = service.getLongUrl(shortUrl);
 		if (longUrl != null) {
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Location", longUrl);
-			return new ResponseEntity<String>(headers, HttpStatus.FOUND);
+			return new ResponseEntity<>(headers, HttpStatus.FOUND);
 		} else {
 			return ResponseEntity.notFound().build();
 		}

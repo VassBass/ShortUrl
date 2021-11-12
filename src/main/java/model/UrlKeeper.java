@@ -1,22 +1,29 @@
 package model;
 
-import org.jetbrains.annotations.NotNull;
 import service.UrlConverter;
 
 public class UrlKeeper {
-    @NotNull
-    private final String longUrl, shortUrl;
+    private String longUrl, shortUrl;
+    private final int lengthOfShortUrl;
 
-    public UrlKeeper(@NotNull String longUrl, int lengthOfShortUrl){
+    public UrlKeeper(){
+        this.lengthOfShortUrl = 6;
+    }
+
+    public UrlKeeper(String longUrl, int lengthOfShortUrl){
         this.longUrl = longUrl;
+        this.lengthOfShortUrl = lengthOfShortUrl;
         this.shortUrl = UrlConverter.createShortUrl(lengthOfShortUrl);
     }
 
-    public @NotNull String getLongUrl(){
+    public String getLongUrl(){
         return this.longUrl;
     }
-
-    public @NotNull String getShortUrl(){
+    public String getShortUrl(){
         return this.shortUrl;
+    }
+
+    public void setLongUrl(String longUrl) {
+        this.longUrl = longUrl;
     }
 }
