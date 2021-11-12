@@ -4,23 +4,23 @@
         <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
         <title>Short URL</title>
     </head>
-    <body style="background-color:#000000">
-        <h1 style="display:flex; justify-content:center; margin-top:100px; color:#FFFFFF"
-        >Получить короткую ссылку</h1>
+    <body style="background-color:#363945">
+        <h2 style="display:flex; justify-content:center; margin-top:100px; color:#FFFFFF; font-family: Garamond, serif"
+        >Получить короткую ссылку</h2>
         <form style="display:flex; justify-content:center;"
               action="#" th:action="@{/}" th:object="${keeper}" method="post">
-            <p style="color:#FFFFFF">Полная ссылка:
-                <input style="border-radius:10px; height:20px; width:500px; margin-bottom:10px"
+            <p style="color:#FFFFFF; font-family: Garamond, serif">Полная ссылка:
+                <input style="border-radius:10px; height:20px; width:500px; margin-bottom:10px; text-align:center"
                        type="text" th:field="*{longUrl}"/>
             </p>
             <p>
-                <input style="margin-left:5px; background-color:#FFFFFF; border-radius:10px;height:24px; width:100px"
+                <input style="margin-left:5px; background-color:#FFFFFF; border-radius:10px;height:24px; width:100px; font-family: Garamond, serif"
                        type="submit" value="Создать" />
-                <input style="background-color:#FFFFFF; border-radius:10px; height:24px; width:100px"
+                <input style="background-color:#FFFFFF; border-radius:10px; height:24px; width:100px; font-family: Garamond, serif"
                        type="reset" value="Очистить" />
             </p>
         </form>
-        <a style="display:flex; justify-content:center; color:#FFFFFF"
+        <a style="display:flex; justify-content:center; color:#FFFFFF; font-family: Garamond, serif"
            href="/all">Посмотреть все сохраненные ссылки</a>
     </body>
 </html>
