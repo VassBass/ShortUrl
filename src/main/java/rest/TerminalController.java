@@ -1,19 +1,13 @@
-package com.vassbassapp.ShortUrl;
+package rest;
 
+import com.vassbassapp.ShortUrl.ShortUrlApplication;
 import model.UrlKeeper;
 import service.UrlConverter;
-import service.UrlService;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class ConsoleApplication {
-
-    private final UrlService service;
-
-    public ConsoleApplication(UrlService service){
-        this.service = service;
-    }
+public class TerminalController {
 
     public void start(){
         printMainMessage();
@@ -27,7 +21,7 @@ public class ConsoleApplication {
             }else if (request.equalsIgnoreCase("help")) {
                 printHelpMessage();
             }else if (request.equalsIgnoreCase("all")){
-                List<UrlKeeper> list = service.getAllUrl();
+                List<UrlKeeper> list = ShortUrlApplication.service.getAllUrl();
                 for (UrlKeeper keeper : list){
                     System.out.println("-");
                     System.out.println("longUrl: " + keeper.getLongUrl());
@@ -35,7 +29,7 @@ public class ConsoleApplication {
                 }
             }else {
                 if (UrlConverter.isUrl(request)) {
-                    UrlKeeper urlKeeper = service.addUrl(request, 6);
+                    UrlKeeper urlKeeper = ShortUrlApplication.service.addUrl(request, 6);
                     System.out.println("Ваша короткая ссылка:");
                     System.out.println("http://localhost:8080/" + urlKeeper.getShortUrl());
                 }else {

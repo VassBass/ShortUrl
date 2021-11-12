@@ -11,22 +11,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import repository.UrlRepository;
+import rest.TerminalController;
+import service.UrlConverter;
 import service.UrlService;
 
 import java.util.List;
 
 @SpringBootApplication
-//@RestController
-//@RequestMapping
 @Controller
 public class ShortUrlApplication {
 
-	private static final UrlService service = new UrlService(new UrlRepository());
+	public static final UrlService service = new UrlService(new UrlRepository());
 
 	public static void main(String[] args) {
 		SpringApplication.run(ShortUrlApplication.class, args);
 
-		new ConsoleApplication(service).start();
+		new TerminalController().start();
 	}
 
 	@GetMapping("/")
@@ -37,9 +37,13 @@ public class ShortUrlApplication {
 
 	@PostMapping("/")
 	public String shortSubmit(@ModelAttribute UrlKeeper fromModel, Model model){
-		UrlKeeper keeper = service.addUrl(fromModel.getLongUrl(), 6);
-		model.addAttribute("keeper", keeper);
-		return "result";
+		if (UrlConverter.isUrl(fromModel.getLongUrl())) {
+			UrlKeeper keeper = service.addUrl(fromModel.getLongUrl(), 6);
+			model.addAttribute("keeper", keeper);
+			return "result";
+		}else {
+			return "not-url";
+		}
 	}
 
 	@GetMapping(path = "/{shortUrl}")

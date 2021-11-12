@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class UrlService {
 
-    private UrlRepository repository;
+    private final UrlRepository repository;
 
     public UrlService(UrlRepository repository){
         this.repository = repository;
