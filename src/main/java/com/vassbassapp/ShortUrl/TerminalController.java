@@ -24,13 +24,13 @@ public class TerminalController {
                 for (UrlKeeper keeper : list){
                     System.out.println("-");
                     System.out.println("longUrl: " + keeper.getLongUrl());
-                    System.out.println("shortUrl: http://localhost:8080/" + keeper.getShortUrl());
+                    System.out.println("shortUrl: " + keeper.getShortUrl());
                 }
             }else {
                 if (UrlConverter.isUrl(request)) {
                     UrlKeeper urlKeeper = ShortUrlApplication.service.addUrl(request, 6);
                     System.out.println("Ваша короткая ссылка:");
-                    System.out.println("http://localhost:8080/" + urlKeeper.getShortUrl());
+                    System.out.println(urlKeeper.getShortUrl());
                 }else {
                     System.out.println("Ваш ввод не является URL-адресом");
                 }

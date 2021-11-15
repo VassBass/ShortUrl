@@ -14,7 +14,7 @@ public class UrlConverter {
             lengthOfShortUrl = Math.abs(lengthOfShortUrl);
         }
         RandomStringGenerator generator = new RandomStringGenerator.Builder().filteredBy(UrlConverter::isLetterOrDigit).build();
-        return generator.generate(lengthOfShortUrl);
+        return "http://localhost:8080/" + generator.generate(lengthOfShortUrl);
     }
 
     private static boolean isLetterOrDigit(int point){

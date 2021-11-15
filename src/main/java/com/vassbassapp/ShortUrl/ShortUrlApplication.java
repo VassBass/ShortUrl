@@ -47,7 +47,7 @@ public class ShortUrlApplication {
 
 	@GetMapping(path = "/{shortUrl}")
 	public ResponseEntity<String> redirect(@PathVariable("shortUrl") String shortUrl) {
-		String longUrl = service.getLongUrl(shortUrl);
+		String longUrl = service.getLongUrl("http://localhost:8080/" + shortUrl);
 		if (longUrl != null) {
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Location", longUrl);
