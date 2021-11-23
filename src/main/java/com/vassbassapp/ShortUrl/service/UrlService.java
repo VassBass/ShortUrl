@@ -1,10 +1,7 @@
 package com.vassbassapp.ShortUrl.service;
 
-import com.vassbassapp.ShortUrl.model.UrlKeeper;
 import org.springframework.stereotype.Service;
 import com.vassbassapp.ShortUrl.repository.UrlRepository;
-
-import java.util.List;
 
 @Service
 public class UrlService {
@@ -15,12 +12,8 @@ public class UrlService {
         this.repository = repository;
     }
 
-    public UrlKeeper addUrl(String longUrl, int lengthOfShortUrl){
-        return this.repository.addUrl(longUrl, lengthOfShortUrl);
-    }
-
-    public List<UrlKeeper>getAllUrl(){
-        return this.repository.getAllUrl();
+    public void addUrl(String longUrl, String shortUrl){
+        this.repository.addUrl(longUrl, shortUrl);
     }
 
     public String getLongUrl(String shortUrl){
